@@ -15,6 +15,8 @@ DLUGOSC_KODU = 4
 # Moduły kolegów nie narzucają limitu. Jest to konfiguracja rozgrywki w UI.
 MAKS_PROB = 10
 TRYBY = {"easy": ("Łatwy", 3), "hard": ("Trudny", 9)}
+OPIS_POZYCJI = "Ilość cyfr na właściwej pozycji"
+OPIS_CYFR = "Ilość poprawnych cyfr na złej pozycji"
 
 
 def odczytaj_probe(tekst: str, maks_cyfra: int) -> list[int]:
@@ -43,8 +45,8 @@ class EkranStartowy(Screen):
                     f"Odkryj kod w {MAKS_PROB} próbach. Cyfry mogą się powtarzać, "
                     "a zero może być pierwszą cyfrą.", classes="description"
                 )
-                yield Static("● Miejsce — cyfra na właściwej pozycji.", classes="exact legend")
-                yield Static("○ Cyfra — dobra cyfra, ale na innej pozycji.", classes="misplaced legend")
+                yield Static(f"● {OPIS_POZYCJI}.", classes="exact legend")
+                yield Static(f"○ {OPIS_CYFR}.", classes="misplaced legend")
                 yield Static(
                     "Wyniki to liczby trafień, nie wskazówki dla konkretnych pól.",
                     classes="muted description"
@@ -125,7 +127,10 @@ class EkranGry(Screen):
                         yield Static("Historia prób", classes="panel-title")
                         yield Static("Zacznij od dowolnego kodu.", id="history-hint", classes="muted")
                         yield DataTable(id="history", zebra_stripes=True, cursor_type="row")
-                        yield Static("● Właściwa pozycja   ○ Inna pozycja", id="table-legend", classes="muted")
+                        yield Static(
+                            f"● {OPIS_POZYCJI}\n○ {OPIS_CYFR}",
+                            id="table-legend", classes="muted"
+                        )
                     with Vertical(id="control-panel", classes="panel"):
                         yield Static("Twój następny ruch", classes="panel-title")
                         yield Static(
@@ -136,12 +141,8 @@ class EkranGry(Screen):
                         yield Button("Sprawdź kod  ↵", id="submit", variant="primary", disabled=True)
                         yield Static("Gotowy na pierwszą próbę.", id="message", markup=False)
                         yield Static("JAK CZYTAĆ WYNIK", classes="eyebrow section-label")
-                        yield Static("● Cyfra na właściwej pozycji.", classes="exact legend")
-                        yield Static("○ Cyfra na innej pozycji.", classes="misplaced legend")
-                        yield Static(
-                            "Znaczniki podają tylko liczbę trafień. Każda cyfra jest liczona raz.",
-                            classes="muted description"
-                        )
+                        yield Static(f"● {OPIS_POZYCJI}.", classes="exact legend")
+                        yield Static(f"○ {OPIS_CYFR}.", classes="misplaced legend")
                 with Vertical(id="result", classes="panel"):
                     yield Static("", id="result-title", classes="panel-title")
                     yield Static("", id="result-detail", markup=False)
@@ -220,7 +221,7 @@ class EkranGry(Screen):
                 f"Zapisano prób: {self.liczba_prob} / {MAKS_PROB}."
             )
             komunikat.remove_class("error")
-            komunikat.update(f"Na miejscu: {miejsca}. Na innej pozycji: {cyfry}.")
+            komunikat.update(f"{OPIS_POZYCJI}: {miejsca}.\n{OPIS_CYFR}: {cyfry}.")
             pole.value = ""
             self.query_one("#submit", Button).disabled = True
             if miejsca == DLUGOSC_KODU:
