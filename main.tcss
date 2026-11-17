@@ -1,0 +1,144 @@
+/* Wspólna paleta i odstępy. Panele przewijają się również w małym terminalu. */
+Screen {
+    background: #0c121c;
+    color: #e4ecf5;
+}
+Footer {
+    background: #151f2d;
+    color: #91a5bc;
+}
+Static { height: auto; }
+.eyebrow {
+    color: #63dbc1;
+    text-style: bold;
+}
+.muted { color: #9bacc0; }
+.exact { color: #63dbc1; }
+.misplaced { color: #efc47a; }
+.description { margin: 1 0; }
+.legend { margin-bottom: 0; }
+#start-card .legend { margin-bottom: 1; }
+.section-label { margin-top: 1; margin-bottom: 1; }
+.panel-title { text-style: bold; margin-bottom: 1; }
+.actions { height: auto; min-height: 3; }
+Button {
+    background: #1d2a3c;
+    color: #dce7f3;
+    border: tall transparent;
+    min-width: 10;
+    margin-right: 1;
+}
+Button:hover { background: #2b3b51; }
+Button:focus { text-style: bold; border: tall #8ca6c5; }
+Button.-primary {
+    background: #63dbc1;
+    color: #0c121c;
+    text-style: bold;
+}
+Button.-primary:hover { background: #91ead7; }
+Button:disabled { background: #1b2934; color: #75879b; }
+Input {
+    background: #0c1521;
+    border: tall #3d5269;
+    margin: 1 0;
+    width: 100%;
+}
+Input:focus { border: tall #63dbc1; }
+#start-scroll { padding: 2; align-horizontal: center; }
+#start-card {
+    width: 72;
+    max-width: 100%;
+    height: auto;
+    
+    padding: 2 3;
+    border: round #34465d;
+    background: #121c2a;
+}
+#start-title { text-style: bold; color: #f2f6fb; margin-top: 1; }
+#start-subtitle { color: #9bacc0; margin-top: 1; }
+#start-secret {
+    background: #1b2b3d;
+    color: #63dbc1;
+    text-style: bold;
+    text-align: center;
+    padding: 1;
+    margin-top: 1;
+}
+#difficulty { background: transparent; border: none; padding: 0; margin-bottom: 1; }
+RadioButton { background: transparent; }
+#start { width: 1fr; }
+#exit { min-width: 10; margin-right: 0; }
+#game-header {
+    height: 3;
+    padding: 1 2 0 2;
+    background: #151f2d;
+}
+#brand { width: 1fr; text-style: bold; }
+#mode-badge { width: auto; color: #63dbc1; }
+#game-scroll { padding: 1 2; align-horizontal: center; }
+#game-content { height: auto; max-width: 120;  }
+#round-header { height: 3; align-vertical: middle; }
+#round { width: 1fr; }
+#secret { width: auto; color: #9bacc0; text-style: bold; }
+#board { height: auto; }
+.panel {
+    background: #121c2a;
+    border: round #34465d;
+    padding: 1 2;
+    height: auto;
+}
+#history-panel { width: 1fr; margin-right: 2; }
+#history-hint { margin-bottom: 1; }
+#history { height: 18; background: #121c2a; }
+DataTable > .datatable--header { background: #203044; color: #a9bad0; text-style: bold; }
+DataTable > .datatable--odd-row { background: #162334; }
+DataTable > .datatable--even-row { background: #121c2a; }
+DataTable > .datatable--cursor { background: #263b50; color: #eef5fc; }
+#table-legend { margin-top: 1; }
+#control-panel { width: 38; }
+#submit { width: 100%; margin-right: 0; }
+#message {
+    min-height: 3;
+    background: #192b38;
+    padding: 1;
+    margin-top: 1;
+    color: #b5e9dd;
+}
+#message.error { color: #ffb7ae; background: #36242e; }
+#game-actions { padding: 0 2; background: #151f2d; }
+#result { margin-top: 1; }
+#result.win { border: round #63dbc1; }
+#result.win .panel-title { color: #63dbc1; }
+#result.loss { border: round #efc47a; }
+#result.loss .panel-title { color: #efc47a; }
+/* Poniżej 88 kolumn pole wejściowe jest przed historią. */
+EkranGry.narrow #board { layout: vertical; }
+EkranGry.narrow #control-panel { width: 100%; }
+EkranGry.narrow #history-panel { width: 100%; margin-right: 0; margin-top: 1; }
+
+EkranGry.narrow #history { height: 12; }
+EkranGry.narrow #game-scroll { padding: 0 2; }
+EkranGry.narrow #round-header { height: 2; }
+EkranGry.narrow #control-panel { padding: 0 1; }
+EkranGry.narrow #control-panel .panel-title { margin-bottom: 0; }
+EkranGry.narrow Input { margin: 0 0 1 0; }
+EkranGry.narrow #message { padding: 0 1; min-height: 2; }
+EkranGry.narrow #control-panel .section-label,
+EkranGry.narrow #control-panel .legend,
+EkranGry.narrow #control-panel .description { display: none; }
+EkranGry.small #game-scroll { padding: 0 1; }
+EkranGry.small #game-header { padding: 1 1 0 1; }
+EkranGry.small #game-actions { padding: 0 1; }
+EkranGry.small .panel { padding: 1; }
+EkranGry.small #game-actions Button { min-width: 8; width: 1fr; }
+Potwierdzenie { align: center middle; background: #080d16 80%; }
+#confirm {
+    width: 56;
+    max-width: 95%;
+    height: auto;
+    max-height: 95%;
+    padding: 1 2;
+    border: round #63dbc1;
+    background: #121c2a;
+}
+#confirm .actions Button { width: 1fr; min-width: 8; }
